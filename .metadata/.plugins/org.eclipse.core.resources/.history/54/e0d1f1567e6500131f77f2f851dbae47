@@ -1,0 +1,13 @@
+package net.ai_comp.contests2014.aidatingsim;
+
+import javax.swing.JFrame;
+
+@SuppressWarnings("all")
+public class GUIClient extends JFrame {
+  public void GUIClient() {
+    this.setTitle("AIDatingSim");
+  }
+  
+  public static void main(final String[] args) {
+  }
+}

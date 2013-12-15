@@ -1,0 +1,5 @@
+package net.ai_comp.contests2014.aidatingsim;
+
+@SuppressWarnings("all")
+public class GUIClient /* implements JFrame  */{
+}

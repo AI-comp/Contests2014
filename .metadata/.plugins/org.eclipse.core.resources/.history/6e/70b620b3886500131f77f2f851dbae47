@@ -1,0 +1,31 @@
+package net.ai_comp.contests2014.aidatingsim
+
+import javax.swing.JPanel
+
+class GamePanel extends JPanel implements Runnable{
+	
+	var thread = new Thread(this)
+	val sleepTime = 30
+	
+	new(){
+		
+		
+		thread.start()
+
+	}
+	
+	override run() {
+		
+		
+	while(true){
+		repaint()
+		try {
+			Thread::sleep(sleepTime)
+		} catch (InterruptedException e){
+			e.printStackTrace()
+		}
+		
+		}
+	}
+	
+}

@@ -1,0 +1,27 @@
+package net.ai_comp.contests2014.aidatingsim;
+
+import javax.swing.JPanel;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
+
+@SuppressWarnings("all")
+public class GamePanel extends JPanel implements Runnable {
+  private Thread thread = new Function0<Thread>() {
+    public Thread apply() {
+      Thread _thread = new Thread(GamePanel.this);
+      return _thread;
+    }
+  }.apply();
+  
+  private final int sleepTime = 30;
+  
+  public GamePanel() {
+    this.thread.start();
+  }
+  
+  public void run() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: type void is not applicable at this location"
+      + "\nType mismatch: type void is not applicable at this location"
+      + "\nUnreachable expression.");
+  }
+}

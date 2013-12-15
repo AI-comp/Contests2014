@@ -1,0 +1,55 @@
+package net.ai_comp.contests2014.aidatingsim;
+
+import java.awt.Graphics;
+import javax.swing.JPanel;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
+
+@SuppressWarnings("all")
+public class GamePanel extends JPanel implements Runnable {
+  private Thread thread = new Function0<Thread>() {
+    public Thread apply() {
+      Thread _thread = new Thread(GamePanel.this);
+      return _thread;
+    }
+  }.apply();
+  
+  private final int sleepTime = 30;
+  
+  public GamePanel() {
+    this.thread.start();
+  }
+  
+  private /* Image */Object loadImage(final String fileName) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field ImageIcon is undefined for the type GamePanel"
+      + "\nThe method or field icon is undefined for the type GamePanel"
+      + "\nThe method newImageIcon is undefined for the type GamePanel"
+      + "\nThe method or field icon is undefined for the type GamePanel"
+      + "\ngetImage cannot be resolved");
+  }
+  
+  public void paintComponent(final Graphics g) {
+    super.paintComponent(g);
+  }
+  
+  public void run() {
+    boolean _while = true;
+    while (_while) {
+      {
+        this.repaint();
+        try {
+          Thread.sleep(this.sleepTime);
+        } catch (final Throwable _t) {
+          if (_t instanceof InterruptedException) {
+            final InterruptedException e = (InterruptedException)_t;
+            e.printStackTrace();
+          } else {
+            throw Exceptions.sneakyThrow(_t);
+          }
+        }
+      }
+      _while = true;
+    }
+  }
+}

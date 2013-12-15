@@ -1,0 +1,9 @@
+package net.ai_comp.contests2014.aidatingsim;
+
+@SuppressWarnings("all")
+public class GamePanel implements /* JPanel */Runnable {
+  public void run() {
+    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("TODO: auto-generated method stub");
+    throw _unsupportedOperationException;
+  }
+}

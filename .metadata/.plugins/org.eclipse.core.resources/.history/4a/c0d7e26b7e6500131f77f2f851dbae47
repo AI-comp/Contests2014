@@ -1,0 +1,23 @@
+package net.ai_comp.contests2014.aidatingsim;
+
+import java.awt.Container;
+import javax.swing.JFrame;
+import net.ai_comp.contests2014.aidatingsim.GamePanel;
+
+@SuppressWarnings("all")
+public class GUIClient extends JFrame {
+  public void GUIClient() {
+    this.setTitle("AIDatingSim");
+    GamePanel _gamePanel = new GamePanel();
+    final GamePanel panel = _gamePanel;
+    final Container contentPane = this.getContentPane();
+    contentPane.add(panel);
+    this.pack();
+  }
+  
+  public static void main(final String[] args) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field JFrame is undefined for the type GUIClient"
+      + "\nEXIT_ON_CLOSE cannot be resolved");
+  }
+}

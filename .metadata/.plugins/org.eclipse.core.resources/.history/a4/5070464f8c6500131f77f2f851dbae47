@@ -1,0 +1,58 @@
+package net.ai_comp.contests2014.aidatingsim
+
+import javax.swing.JPanel
+import javax.swing.ImageIcon
+import java.awt.Graphics
+import java.awt.Image
+import java.awt.Color
+
+class GamePanel extends JPanel implements Runnable{
+	
+	var thread = new Thread(this)
+	val sleepTime = 30
+	
+	Image bgImage
+	Image charaImage
+	
+	new(){
+		
+		bgImage = loadImage('res/bg/classroom_1.jpg')
+		charaImage = loadImage('res/chara/立ち絵01_通常.png')
+
+		thread.start()
+		
+	}
+	
+	def private Image loadImage(String fileName){
+		val icon = new ImageIcon(getClass().getResource(fileName))
+		return icon.getImage
+	}
+	
+	
+	override void paintComponent(Graphics g){
+		super.paintComponent(g)
+		
+		g.drawImage(bgImage,0,0,null)
+		
+		val color = new Color(0,0,0,192)
+	    g.setColor(color)
+	    
+		g.fillRect(0,420,800,180)
+	}
+	
+	override run() {
+		
+		
+	while(true){
+		
+		repaint()
+		try {
+			Thread::sleep(sleepTime)
+		} catch (InterruptedException e){
+			e.printStackTrace()
+		}
+		
+		}
+	}
+	
+}

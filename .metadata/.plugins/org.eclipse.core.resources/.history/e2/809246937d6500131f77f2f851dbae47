@@ -1,0 +1,9 @@
+package net.ai_comp.contests2014.aidatingsim
+
+class GamePanel extends JPanel implements Runnable{
+	
+	override run() {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
+}

@@ -1,0 +1,22 @@
+package net.ai_comp.contests2014.aidatingsim;
+
+import javax.swing.JPanel;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
+
+@SuppressWarnings("all")
+public class GamePanel extends JPanel implements Runnable {
+  private Thread thread = new Function0<Thread>() {
+    public Thread apply() {
+      Thread _thread = new Thread();
+      return _thread;
+    }
+  }.apply();
+  
+  public GamePanel() {
+  }
+  
+  public void run() {
+    UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException("TODO: auto-generated method stub");
+    throw _unsupportedOperationException;
+  }
+}

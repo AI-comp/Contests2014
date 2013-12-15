@@ -1,0 +1,13 @@
+package net.ai_comp.contests2014.aidatingsim
+
+class GUIClient extends JFrame{
+	
+	public GUIClient() {
+		
+	}
+	
+	def static void main(String[] args){
+		
+	}
+	
+}

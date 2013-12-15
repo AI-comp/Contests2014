@@ -1,0 +1,27 @@
+package net.ai_comp.contests2014.aidatingsim
+
+import javax.swing.JFrame
+import java.awt.Dimension
+
+class GUIClient extends JFrame{
+	
+	
+	new() {
+		val panel = new GamePanel => [
+			setPreferredSize(new Dimension(640,480))
+		]
+		val contentPane = getContentPane
+		contentPane.add(panel)
+		pack
+	}
+	
+	@SuppressWarnings("unused")
+	def static void main(String[] args){
+		val frame = new GUIClient => [
+			title = 'AIDatingSim'
+			defaultCloseOperation = JFrame::EXIT_ON_CLOSE
+			visible = true
+		]		
+	}
+	
+}

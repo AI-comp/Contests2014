@@ -1,0 +1,10 @@
+package net.ai_comp.contests2014.aidatingsim
+
+class GUIClient {
+	
+	
+	def static void main(String[] args){
+		
+	}
+	
+}
