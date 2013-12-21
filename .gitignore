@@ -1,10 +1,13 @@
-*.class
+# Eclipse
+bin
 
-# Package Files #
+# Java
+*.class
 *.jar
 *.war
 *.ear
 
+# Mac OS
 .DS_Store
 */.DS_Store
 
