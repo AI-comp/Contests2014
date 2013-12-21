@@ -43,4 +43,20 @@ public class GameEngine {
       internalPlayers.get(i).addParameter(index);
     }
   }
+  
+  public int getWinner() {
+    int winner = 0;
+    int winnerScore = 0;
+    for (int i = 0; i < internalPlayers.size(); i++) {
+      int score = 0;
+      for (Heroine heroine : heroines) {
+        score += heroine.getEvaluation(internalPlayers.get(i));
+      }
+      if (winnerScore < score) {
+        winner = i;
+        winnerScore = score;
+      }
+    }
+    return winner;
+  }
 }
