@@ -7,9 +7,10 @@ public class Heroine {
   private ArrayList<Integer> coefficients;
 
   public Heroine() {
+    coefficients = new ArrayList<Integer>();
     Random random = new Random();
     for (int i = 0; i < 3; i++) {
-      coefficients.set(i, random.nextInt(5));
+      coefficients.add(random.nextInt(16) - 5);
     }
   }
 
