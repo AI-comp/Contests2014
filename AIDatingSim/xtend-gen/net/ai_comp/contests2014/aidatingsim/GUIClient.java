@@ -16,11 +16,11 @@ public class GUIClient extends JFrame {
   public GUIClient() {
     GamePanel _gamePanel = new GamePanel();
     final Procedure1<GamePanel> _function = new Procedure1<GamePanel>() {
-        public void apply(final GamePanel it) {
-          Dimension _dimension = new Dimension(GUIClient.this.WIDTH, GUIClient.this.HEIGHT);
-          it.setPreferredSize(_dimension);
-        }
-      };
+      public void apply(final GamePanel it) {
+        Dimension _dimension = new Dimension(GUIClient.this.WIDTH, GUIClient.this.HEIGHT);
+        it.setPreferredSize(_dimension);
+      }
+    };
     final GamePanel panel = ObjectExtensions.<GamePanel>operator_doubleArrow(_gamePanel, _function);
     final Container contentPane = this.getContentPane();
     contentPane.add(panel);
@@ -30,12 +30,12 @@ public class GUIClient extends JFrame {
   public static void main(final String[] args) {
     GUIClient _gUIClient = new GUIClient();
     final Procedure1<GUIClient> _function = new Procedure1<GUIClient>() {
-        public void apply(final GUIClient it) {
-          it.setTitle("AIDatingSim");
-          it.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-          it.setVisible(true);
-        }
-      };
+      public void apply(final GUIClient it) {
+        it.setTitle("AIDatingSim");
+        it.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        it.setVisible(true);
+      }
+    };
     final GUIClient frame = ObjectExtensions.<GUIClient>operator_doubleArrow(_gUIClient, _function);
   }
 }
