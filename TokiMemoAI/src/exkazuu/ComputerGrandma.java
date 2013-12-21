@@ -66,7 +66,22 @@ public class ComputerGrandma implements Computer {
 
   @Override
   public int doTurn(int selfId, List<Player> players, List<Integer> mostFavoritePlayers) {
-
-    return 0;
+    int paramCount = players.get(0).getParameters().size();
+    int[] params = new int[paramCount];
+    for (Integer mostFavoritePlayer : mostFavoritePlayers) {
+      int[] assumeCoefficient = assumeCoefficient(players, mostFavoritePlayer);
+      for (int i = 0; i < params.length; i++) {
+        params[i] += assumeCoefficient[i];
+      }
+    }
+    int maxValue = -1;
+    int maxIndex = -1;
+    for (int i = 0; i < params.length; i++) {
+      if (maxValue < params[i]) {
+        maxValue = params[i];
+        maxIndex = i;
+      }
+    }
+    return maxIndex;
   }
 }
