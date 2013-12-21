@@ -3,6 +3,7 @@ package fum;
 import java.util.ArrayList;
 import java.util.List;
 
+import engine.GameEngine;
 import engine.api.Computer;
 import engine.api.Player;
 
@@ -16,6 +17,7 @@ public class Danshi implements Computer{
 		int tmpRank = 0;
 		List<Integer> params = mfp.getParameters();
 		for(i=0; i<params.size(); i++) {
+			tmpRank = 0;
 			for(j=0; j<players.size(); j++) {
 				if(params.get(i) < players.get(j).getParameter(i)) {
 					tmpRank++;
@@ -35,7 +37,7 @@ public class Danshi implements Computer{
 		int paramCount = 0;
 		int i, j;
 		for(i=0; i<paramNumber; i++) {
-			paramCount = 0;
+			tmpParamCount = 0;
 			for(j=0; j<results.size(); j++) {
 				if(i == results.get(j)){
 					tmpParamCount++;
@@ -60,4 +62,15 @@ public class Danshi implements Computer{
 		}
 		return getFinalParam(results, paramNumber);
 	}
+	
+	public static void main(String[] args) {
+	    GameEngine gameEngine = new GameEngine();
+	    do {
+	      gameEngine.proceed();
+	      gameEngine.outputStatus();
+	    } while (gameEngine.getTurn() < 20);
+
+	    int winner = gameEngine.getWinner();
+	    System.out.println("Winner is player " + winner);
+	  }
 }
