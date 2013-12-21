@@ -2,12 +2,15 @@ package engine;
 
 import java.util.ArrayList;
 
+import engine.api.Computer;
+
 public class GameEngine {
-	private ArrayList<InternalPlayer> players;
+	private ArrayList<InternalPlayer> internalPlayers;
 	private ArrayList<Heroine> heroines;
+	private ArrayList<Computer> computers;
 
 	public GameEngine() {
-		players = new ArrayList<InternalPlayer>();
+		internalPlayers = new ArrayList<InternalPlayer>();
 		heroines = new ArrayList<Heroine>();
 		for (int i = 0; i < 4; i++) {
 			heroines.add(new Heroine());
@@ -15,8 +18,13 @@ public class GameEngine {
 	}
 
 	public void proceed() {
-		for (InternalPlayer player : players) {
-
+		
+		for (Computer computer: computers) {
+//			computer.doTurn(selfId, players, mostFavoritePlayers)
 		}
+		
+//		for (InternalPlayer player : internalPlayers) {
+//			
+//		}
 	}
 }
