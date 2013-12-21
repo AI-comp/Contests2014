@@ -18,13 +18,26 @@ public class GameEngine {
 	}
 
 	public void proceed() {
-		
-		for (Computer computer: computers) {
-//			computer.doTurn(selfId, players, mostFavoritePlayers)
+		ArrayList<Integer> mostFavoritePlayers;
+		for (Heroine heroine : heroines) {
+			int bestPlayer = 0;
+			int bestEvaluation = 0;
+			for (int i = 0; i < internalPlayers.size(); i++) {
+				int evaluation = heroine.getEvaluation(internalPlayers.get(i));
+				if (bestEvaluation < heroine.getEvaluation(internalPlayers
+						.get(i))) {
+					bestPlayer = i;
+					bestEvaluation = evaluation;
+				}
+			}
 		}
-		
-//		for (InternalPlayer player : internalPlayers) {
-//			
-//		}
+
+		for (int i = 0; i < computers.size(); i++) {
+			//computer.doTurn(i, internalPlayers, )
+		}
+
+		// for (InternalPlayer player : internalPlayers) {
+		//
+		// }
 	}
 }
