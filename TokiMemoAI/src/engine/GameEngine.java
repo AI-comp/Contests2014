@@ -21,16 +21,7 @@ public class GameEngine {
   public void proceed() {
     ArrayList<Integer> mostFavoritePlayers = new ArrayList<Integer>();
     for (Heroine heroine : heroines) {
-      int bestPlayer = 0;
-      int bestEvaluation = 0;
-      for (int i = 0; i < internalPlayers.size(); i++) {
-        int evaluation = heroine.getEvaluation(internalPlayers.get(i));
-        if (bestEvaluation < heroine.getEvaluation(internalPlayers.get(i))) {
-          bestPlayer = i;
-          bestEvaluation = evaluation;
-        }
-      }
-      mostFavoritePlayers.add(bestPlayer);
+      mostFavoritePlayers.add(heroine.getMostFavoritePlayer(internalPlayers));
     }
 
     ArrayList<Player> players = new ArrayList<Player>();
@@ -79,12 +70,11 @@ public class GameEngine {
       }
     }
 
-//    System.out.println("Heroines' favorite players:");
-//    for (int i = 0; i < heroines.size(); i++) {
-//      System.out.print("heroine " + i + ": ");
-//      for (int j = 0; j < internalPlayers.size(); j++) {
-//        System.out.print(heroines.get(i).getCoefficient(j));
-//      }
-//    }
-}
+    System.out.println("Heroines' favorite players:");
+    for (int i = 0; i < heroines.size(); i++) {
+      System.out.print("heroine " + i + ": ");
+      int favoritePlayer = heroines.get(i).getMostFavoritePlayer(internalPlayers);
+      System.out.print(favoritePlayer + " (" + heroines.get(i).getCoefficient(favoritePlayer) + " pts.)");
+    }
+  }
 }

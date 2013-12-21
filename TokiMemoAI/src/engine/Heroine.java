@@ -24,8 +24,17 @@ public class Heroine {
   public int getCoefficient(int index) {
     return coefficients.get(index);
   }
-  
-//  public int getMostFavoritePlayer(){
-//    
-//  }
+
+  public int getMostFavoritePlayer(ArrayList<InternalPlayer> players) {
+    int bestPlayer = 0;
+    int bestEvaluation = 0;
+    for (int i = 0; i < players.size(); i++) {
+      int evaluation = getEvaluation(players.get(i));
+      if (bestEvaluation < getEvaluation(players.get(i))) {
+        bestPlayer = i;
+        bestEvaluation = evaluation;
+      }
+    }
+    return bestPlayer;
+  }
 }
