@@ -9,8 +9,10 @@ public class GameEngine {
   private ArrayList<InternalPlayer> internalPlayers;
   private ArrayList<Heroine> heroines;
   private ArrayList<Computer> computers;
+  private int turn;
 
   public GameEngine() {
+    turn = 0;
     internalPlayers = new ArrayList<InternalPlayer>();
     heroines = new ArrayList<Heroine>();
     for (int i = 0; i < 4; i++) {
@@ -19,6 +21,7 @@ public class GameEngine {
   }
 
   public void proceed() {
+    turn++;
     ArrayList<Integer> mostFavoritePlayers = new ArrayList<Integer>();
     for (Heroine heroine : heroines) {
       mostFavoritePlayers.add(heroine.getMostFavoritePlayer(internalPlayers));
@@ -51,7 +54,13 @@ public class GameEngine {
     return winner;
   }
 
+  public int getTurn() {
+    return turn;
+  }
+
   public void outputStatus() {
+    System.out.println("Turn " + turn);
+
     System.out.println("Players' parameters:");
     for (int i = 0; i < internalPlayers.size(); i++) {
       System.out.print("player " + i + ": ");
@@ -76,5 +85,7 @@ public class GameEngine {
       int favoritePlayer = heroines.get(i).getMostFavoritePlayer(internalPlayers);
       System.out.print(favoritePlayer + " (" + heroines.get(i).getCoefficient(favoritePlayer) + " pts.)");
     }
+
+    System.out.println("");
   }
 }
