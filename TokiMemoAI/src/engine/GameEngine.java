@@ -84,7 +84,7 @@ public class GameEngine {
     System.out.println("Heroines' coefficients:");
     for (int i = 0; i < heroines.size(); i++) {
       System.out.print("heroine " + i + ":");
-      for (int j = 0; j < internalPlayers.size(); j++) {
+      for (int j = 0; j < 3; j++) {
         System.out.print(" " + heroines.get(i).getCoefficient(j));
       }
       System.out.println();
@@ -96,7 +96,8 @@ public class GameEngine {
     for (int i = 0; i < heroines.size(); i++) {
       System.out.print("heroine " + i + ": ");
       int favoritePlayer = heroines.get(i).getMostFavoritePlayer(internalPlayers);
-      System.out.println(favoritePlayer + " (" + heroines.get(i).getCoefficient(favoritePlayer) + " pts.)");
+      System.out.println(favoritePlayer + " (" + heroines.get(i).getEvaluation(internalPlayers.get(favoritePlayer))
+          + " pts.)");
     }
 
     System.out.println("");
