@@ -1,0 +1,22 @@
+player = (par1, par2, par3)
+heroine = (fav_par1, fav_par2, fav_par3)
+players = player[4]
+heroines = heroine[4]
+heroine.favor(p: player):
+	p.par1 * self.fav_par1 +
+	p.par2 * self.fav_par2 +
+	p.par3 * self.fav_par3
+
+do_turn:
+	foreach p in players:
+		p selects one parameter
+		p[selected_parameter] ++
+	foreach h in heroines:
+		h.most_favorite_player = argmax_p(h.favor(p))
+	end if turn == 20
+
+end:
+	foreach p in players:
+		foreach h in heroines:
+			p.score += h.favor(p)
+	winner = argmax_p(p.score)
