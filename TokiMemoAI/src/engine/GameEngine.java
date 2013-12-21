@@ -50,7 +50,13 @@ public class GameEngine {
     }
 
     for (int i = 0; i < computers.size(); i++) {
-      int index = computers.get(i).doTurn(i, players, mostFavoritePlayers);
+      int index;
+      try {
+        index = computers.get(i).doTurn(i, players, mostFavoritePlayers);
+      } catch (Exception e) {
+        System.out.println(e);
+        index = 0;
+      }
       internalPlayers.get(i).addParameter(index);
     }
   }
