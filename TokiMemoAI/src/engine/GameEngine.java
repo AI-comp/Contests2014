@@ -43,7 +43,7 @@ public class GameEngine {
       internalPlayers.get(i).addParameter(index);
     }
   }
-  
+
   public int getWinner() {
     int winner = 0;
     int winnerScore = 0;
@@ -59,4 +59,32 @@ public class GameEngine {
     }
     return winner;
   }
+
+  public void outputStatus() {
+    System.out.println("Players' parameters:");
+    for (int i = 0; i < internalPlayers.size(); i++) {
+      System.out.print("player " + i + ": ");
+      for (int j = 0; j < 3; j++) {
+        System.out.print(internalPlayers.get(i).getParameter(j));
+      }
+    }
+
+    System.out.println("");
+
+    System.out.println("Heroines' coefficients:");
+    for (int i = 0; i < heroines.size(); i++) {
+      System.out.print("heroine " + i + ": ");
+      for (int j = 0; j < internalPlayers.size(); j++) {
+        System.out.print(heroines.get(i).getCoefficient(j));
+      }
+    }
+
+//    System.out.println("Heroines' favorite players:");
+//    for (int i = 0; i < heroines.size(); i++) {
+//      System.out.print("heroine " + i + ": ");
+//      for (int j = 0; j < internalPlayers.size(); j++) {
+//        System.out.print(heroines.get(i).getCoefficient(j));
+//      }
+//    }
+}
 }
