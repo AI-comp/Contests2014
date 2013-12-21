@@ -1,7 +1,9 @@
 package exkazuu;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import engine.EmptyComputer;
 import engine.GameEngine;
 import engine.api.Computer;
 import engine.api.Player;
@@ -20,17 +22,21 @@ public class ComputerGrandma implements Computer {
   }
 
   private boolean isAcceptable(int[] params, List<Player> players, int mostFavoritePlayer) {
+    ArrayList<Integer> maxIndices = new ArrayList<Integer>();
     int maxResult = -1;
     int maxIndex = -1;
     for (int i = 0; i < players.size(); i++) {
       Player player = players.get(i);
       int result = getFavoritePoint(params, player);
-      if (maxResult < result) {
+      if (maxResult <= result) {
+        if (maxResult != result) {
+          maxIndices.clear();
+        }
         maxResult = result;
-        maxIndex = i;
+        maxIndices.add(i);
       }
     }
-    return maxIndex == mostFavoritePlayer;
+    return maxIndices.contains(mostFavoritePlayer);
   }
 
   public int[] assumeCoefficient(List<Player> players, int mostFavoritePlayer) {
@@ -47,7 +53,7 @@ public class ComputerGrandma implements Computer {
       params[0]++;
       for (int j = 0; j < params.length; j++) {
         if (params[j] > maxValue && j + 1 < params.length) {
-          params[j] = 0;
+          params[j] = minValue;
           params[j + 1]++;
         }
       }
@@ -61,20 +67,22 @@ public class ComputerGrandma implements Computer {
     }
     for (int j = 0; j < params.length; j++) {
       assumedParams[j] /= assumedCount;
+      System.out.print(assumedParams[j] + ", ");
     }
+    System.out.println();
     return assumedParams;
   }
 
   @Override
   public int doTurn(int selfId, List<Player> players, List<Integer> mostFavoritePlayers) {
-    int paramCount = players.get(0).getParameters().size();
-    int[] params = new int[paramCount];
+    int[] params = new int[players.get(0).getParameters().size()];
     for (Integer mostFavoritePlayer : mostFavoritePlayers) {
       int[] assumeCoefficient = assumeCoefficient(players, mostFavoritePlayer);
       for (int i = 0; i < params.length; i++) {
         params[i] += assumeCoefficient[i];
       }
     }
+
     int maxValue = -1;
     int maxIndex = -1;
     for (int i = 0; i < params.length; i++) {
@@ -87,7 +95,8 @@ public class ComputerGrandma implements Computer {
   }
 
   public static void main(String[] args) {
-    GameEngine gameEngine = new GameEngine();
+    GameEngine gameEngine = new GameEngine(new EmptyComputer(), new EmptyComputer(), new EmptyComputer(),
+        new ComputerGrandma());
     do {
       gameEngine.proceed();
       gameEngine.outputStatus();
