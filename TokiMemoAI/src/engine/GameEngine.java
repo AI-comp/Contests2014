@@ -3,11 +3,11 @@ package engine;
 import java.util.ArrayList;
 
 public class GameEngine {
-	private ArrayList<Player> players;
+	private ArrayList<InternalPlayer> players;
 	private ArrayList<Heroine> heroines;
 
 	public GameEngine() {
-		players = new ArrayList<Player>();
+		players = new ArrayList<InternalPlayer>();
 		heroines = new ArrayList<Heroine>();
 		for (int i = 0; i < 4; i++) {
 			heroines.add(new Heroine());
@@ -15,7 +15,7 @@ public class GameEngine {
 	}
 
 	public void proceed() {
-		for (Player player : players) {
+		for (InternalPlayer player : players) {
 
 		}
 	}

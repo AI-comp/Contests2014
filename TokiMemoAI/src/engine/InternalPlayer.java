@@ -2,10 +2,12 @@ package engine;
 
 import java.util.ArrayList;
 
-public class Player {
+import engine.api.Player;
+
+public class InternalPlayer implements Player {
 	private ArrayList<Integer> parameters;
 
-	public Player() {
+	public InternalPlayer() {
 		parameters = new ArrayList<Integer>();
 		for (int i = 0; i < 3; i++) {
 			parameters.add(0);

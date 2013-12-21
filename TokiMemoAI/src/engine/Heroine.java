@@ -13,7 +13,7 @@ public class Heroine {
 		}
 	}
 
-	public int getEvaluation(Player player) {
+	public int getEvaluation(InternalPlayer player) {
 		int evaluation = 0;
 		for (int i = 0; i < coefficients.size(); i++) {
 			evaluation += player.getParameter(i);
