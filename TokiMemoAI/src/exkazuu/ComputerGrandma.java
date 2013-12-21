@@ -2,6 +2,7 @@ package exkazuu;
 
 import java.util.List;
 
+import engine.GameEngine;
 import engine.api.Computer;
 import engine.api.Player;
 
@@ -83,5 +84,16 @@ public class ComputerGrandma implements Computer {
       }
     }
     return maxIndex;
+  }
+
+  public static void main(String[] args) {
+    GameEngine gameEngine = new GameEngine();
+    do {
+      gameEngine.proceed();
+      gameEngine.outputStatus();
+    } while (gameEngine.getTurn() < 20);
+
+    int winner = gameEngine.getWinner();
+    System.out.println("Winner is player " + winner);
   }
 }

@@ -1,6 +1,8 @@
 package engine;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import engine.api.Computer;
 import engine.api.Player;
@@ -9,14 +11,20 @@ import exkazuu.ComputerGrandma;
 public class GameEngine {
   private ArrayList<InternalPlayer> internalPlayers;
   private ArrayList<Heroine> heroines;
-  private ArrayList<Computer> computers;
+  private List<Computer> computers;
   private int turn;
 
   public GameEngine() {
-    turn = 0;
-    computers = new ArrayList<Computer>();
-    computers.add(new EmptyComputer());
-    computers.add(new ComputerGrandma());
+    this(Arrays.asList(new EmptyComputer(), new ComputerGrandma()));
+  }
+
+  public GameEngine(Computer... computers) {
+    this(Arrays.asList(computers));
+  }
+
+  public GameEngine(List<Computer> computers) {
+    this.turn = 0;
+    this.computers = computers;
 
     internalPlayers = new ArrayList<InternalPlayer>();
     for (int i = 0; i < computers.size(); i++) {
