@@ -1,7 +1,10 @@
 package exkazuu;
 
+import java.util.List;
+
 import engine.InternalPlayer;
 import engine.api.Computer;
+import engine.api.Player;
 
 public class ComputerGrandma implements Computer {
 
@@ -10,10 +13,8 @@ public class ComputerGrandma implements Computer {
   }
 
   @Override
-  public int doTurn(int selfId, InternalPlayer[] players, int[] mostFavoritePlayers) {
-
-
-
+  public int doTurn(int selfId, List<Player> players, List<Integer> mostFavoritePlayers) {
+    // TODO Auto-generated method stub
     return 0;
   }
 }

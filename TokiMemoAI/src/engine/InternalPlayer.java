@@ -1,6 +1,7 @@
 package engine;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import engine.api.Player;
 
@@ -14,6 +15,7 @@ public class InternalPlayer implements Player {
 		}
 	}
 
+	@Override
 	public int getParameter(int index) {
 		return parameters.get(index);
 	}
@@ -22,4 +24,8 @@ public class InternalPlayer implements Player {
 		this.parameters.set(index, parameters.get(index) + 1);
 	}
 
+	@Override
+	public List<Integer> getParameters() {
+	return this.parameters;
+	}
 }
