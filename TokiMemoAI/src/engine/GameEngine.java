@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import engine.api.Computer;
 import engine.api.Player;
+import exkazuu.ComputerGrandma;
 
 public class GameEngine {
   private ArrayList<InternalPlayer> internalPlayers;
@@ -13,7 +14,15 @@ public class GameEngine {
 
   public GameEngine() {
     turn = 0;
+    computers = new ArrayList<Computer>();
+    computers.add(new EmptyComputer());
+    computers.add(new ComputerGrandma());
+
     internalPlayers = new ArrayList<InternalPlayer>();
+    for (int i = 0; i < computers.size(); i++) {
+      internalPlayers.add(new InternalPlayer());
+    }
+
     heroines = new ArrayList<Heroine>();
     for (int i = 0; i < 4; i++) {
       heroines.add(new Heroine());
