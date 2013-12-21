@@ -1,7 +1,7 @@
 package engine.api;
 
-import engine.InternalPlayer;
+import engine.api.Player;
 
 public interface Computer {
-  int doTurn(int selfId, InternalPlayer[] players, int[] mostFavoritePlayers);
+  int doTurn(int selfId, Player[] players, int[] mostFavoritePlayers);
 }
