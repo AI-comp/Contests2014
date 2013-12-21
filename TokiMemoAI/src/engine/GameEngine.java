@@ -8,6 +8,7 @@ import engine.api.Computer;
 import engine.api.Player;
 import exkazuu.ComputerGrandma;
 import fum.Danshi;
+import gumfum.Saboteur;
 
 public class GameEngine {
   private ArrayList<InternalPlayer> internalPlayers;
@@ -16,7 +17,7 @@ public class GameEngine {
   private int turn;
 
   public GameEngine() {
-    this(Arrays.asList(new EmptyComputer(), new ComputerGrandma(), new Danshi()));
+    this(Arrays.asList(new Saboteur(), new ComputerGrandma(), new Danshi()));
   }
 
   public GameEngine(Computer... computers) {
