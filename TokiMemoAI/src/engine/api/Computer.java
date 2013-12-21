@@ -1,9 +1,7 @@
 package engine.api;
 
-import java.util.ArrayList;
-
-import engine.api.Player;
+import java.util.List;
 
 public interface Computer {
-  int doTurn(int selfId, ArrayList<Player> players, ArrayList<Integer> mostFavoritePlayers);
+  int doTurn(int selfId, List<Player> players, List<Integer> mostFavoritePlayers);
 }
