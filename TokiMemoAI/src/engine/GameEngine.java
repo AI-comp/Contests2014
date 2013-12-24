@@ -6,6 +6,7 @@ import java.util.List;
 
 import engine.api.Computer;
 import engine.api.Player;
+import enixer.Ikemen;
 import exkazuu.ComputerGrandma;
 import fum.Danshi;
 import gumfum.Saboteur;
@@ -17,7 +18,7 @@ public class GameEngine {
   private int turn;
 
   public GameEngine() {
-    this(Arrays.asList(new Saboteur(), new ComputerGrandma(), new Danshi()));
+    this(Arrays.asList(new Saboteur(), new ComputerGrandma(), new Danshi(), new Ikemen()));
   }
 
   public GameEngine(Computer... computers) {
