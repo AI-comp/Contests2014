@@ -1,52 +1,31 @@
 player = (par1, par2, par3)
-heroine = (fav_par1, fav_par2, fav_par3)
-players = player[4]
-heroines = heroine[4]
+heroine = (fav_par1, fav_par2, fav_par3, volatility)
 heroine.favor(p: player):
 	p.par1 * self.fav_par1 +
 	p.par2 * self.fav_par2 +
 	p.par3 * self.fav_par3
-
-do_turn:
-	foreach p in players:
-		p selects one parameter
-		p[selected_parameter] ++
-	foreach h in heroines:
-		h.most_favorite_player = argmax_p(h.favor(p))
-	end if turn == 20
-
-end:
-	foreach p in players:
-		foreach h in heroines:
-			p.score += h.favor(p)
-	winner = argmax_p(p.score)
-
-
-
---- alternative
-
-player = (par1, par2, par3)
-heroine = (fav_par1, fav_par2, fav_par3)
-heroine.favor(p: player):
-	p.par1 * self.fav_par1 +
-	p.par2 * self.fav_par2 +
-	p.par3 * self.fav_par3
+score[player, heroine] = {0}
 
 init:
 	players = player[4] (0, 0, 0)
-	heroines = heroine[4] (rnd, rnd, rnd)
-	reveal heroines
+	heroines = heroine[6] (rnd, rnd, rnd, 10)
 
 do_turn:
+	reveal heroines
+	reveal p if p's command is DATING in previous turn
+	
 	foreach p in players:
-		p selects one parameter
-		p[selected_parameter] ++
-	foreach h in heroines:
-		h.most_favorite_player = argmax_p(h.favor(p))
-		reveal h.most_favorite_player
-	end if turn == 20
+		p selects command (TRAINING or DATING)
+		if command == TRAINING:
+			p selects one parameter
+			p[selected_parameter] ++
+		if command == DATING:
+			p selects target from heroines
+			score[p, target] += target.favor(p) * target.volatility
+			target.volatility --
+	end if turn == 30
 
 end:
-	foreach h in heroines:
-		argmax_p(h.favor(p)).score ++
-	winner = argmax_p(p.score)
+	for each h:
+		argmax_p(score[p, h]).star += 1
+	winner = argmax_p(p.star)
