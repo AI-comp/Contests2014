@@ -12,9 +12,10 @@ init:
 
 do_turn:
 	reveal heroines
-	reveal p if p's command is DATING in previous turn
 	
 	foreach p in players:
+		reveal p if p's command is DATING in previous turn
+
 		p selects command (TRAINING or DATING)
 		if command == TRAINING:
 			p selects one parameter
@@ -30,4 +31,5 @@ end:
 		best_players = argmax_p(score[p, h])
 		for each p in best_players:
 			p.star += 12 / best_players.size
-	winner = argmax_p(p.star)
+	winner_candidates = argmax_p{p in players}(p.star)
+	winner = argmax_w{w in winner_candidates}(w.total_score)
