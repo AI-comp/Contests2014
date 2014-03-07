@@ -26,6 +26,8 @@ do_turn:
 	end if turn == 30
 
 end:
-	for each h:
-		argmax_p(score[p, h]).star += 1
+	for each h in heroines:
+		best_players = argmax_p(score[p, h])
+		for each p in best_players:
+			p.star += 12 / best_players.size
 	winner = argmax_p(p.star)

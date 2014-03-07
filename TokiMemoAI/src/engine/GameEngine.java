@@ -89,24 +89,43 @@ public class GameEngine {
 
   public int getWinner() {
     List<Integer> star = new ArrayList<Integer>();
+    List<Integer> totalScore = new ArrayList<Integer>();
     for (int i = 0; i < internalPlayers.size(); i++) {
       star.add(0);
+      totalScore.add(0);
     }
 
     for (InternalHeroine heroine : internalHeroines) {
-      int bestPlayer = heroine.getBestPlayer();
-      star.set(bestPlayer, star.get(bestPlayer) + 1);
+      List<Integer> bestPlayers = heroine.getBestPlayers();
+      for (int bestPlayer : bestPlayers) {
+        star.set(bestPlayer, star.get(bestPlayer) + 12 / bestPlayers.size());
+      }
+      for (int i = 0; i < internalPlayers.size(); i++) {
+        totalScore.set(i, totalScore.get(i) + heroine.getScore(internalPlayers.get(i)));
+      }
+    }
+
+    List<Integer> winners = new ArrayList<Integer>();
+    int winnerStar = 0;
+    for (int i = 0; i < star.size(); i++) {
+      if (winnerStar == star.get(i)) {
+        winners.add(i);
+        winnerStar = star.get(i);
+      } else if (winnerStar < star.get(i)) {
+        winners.clear();
+        winners.add(i);
+        winnerStar = star.get(i);
+      }
     }
 
     int winner = 0;
     int winnerScore = 0;
-    for (int i = 0; i < star.size(); i++) {
-      if (winnerScore < star.get(i)) {
-        winner = i;
-        winnerScore = star.get(i);
+    for (int i = 0; i < winners.size(); i++) {
+      if (winnerScore < totalScore.get(winners.get(i))) {
+        winner = winners.get(i);
+        winnerScore = totalScore.get(winners.get(i));
       }
     }
-    // TODO:tie-break
 
     return winner;
   }

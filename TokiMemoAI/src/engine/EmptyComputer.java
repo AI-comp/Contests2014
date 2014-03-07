@@ -15,7 +15,16 @@ public class EmptyComputer implements Computer {
   @Override
   public Entry<Player.Command, Integer> doTurn(int selfId, List<Player> players, List<Heroine> heroines) {
     Random random = new Random();
-    return new AbstractMap.SimpleEntry<>(Command.values()[random.nextInt(2)], random.nextInt(3));
+    Command command = Command.values()[random.nextInt(2)];
+    int index = 0;
+    switch (command) {
+    case Training:
+      index = random.nextInt(players.get(selfId).getParameters().size());
+      break;
+    case Dating:
+      index = random.nextInt(heroines.size());
+      break;
+    }
+    return new AbstractMap.SimpleEntry<>(command, index);
   }
-
 }

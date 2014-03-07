@@ -60,15 +60,19 @@ public class InternalHeroine implements Heroine {
     }
   }
 
-  public int getBestPlayer() {
-    int bestPlayer = 0;
+  public List<Integer> getBestPlayers() {
+    List<Integer> bestPlayers = new ArrayList<Integer>();
     int bestScore = 0;
     for (int i = 0; i < score.size(); i++) {
-      if (bestScore < score.get(i)) {
-        bestPlayer = i;
+      if (bestScore == score.get(i)) {
+        bestPlayers.add(i);
+        bestScore = score.get(i);
+      } else if (bestScore < score.get(i)) {
+        bestPlayers.clear();
+        bestPlayers.add(i);
         bestScore = score.get(i);
       }
     }
-    return bestPlayer;
+    return bestPlayers;
   }
 }
