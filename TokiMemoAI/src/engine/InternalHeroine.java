@@ -11,6 +11,7 @@ public class InternalHeroine implements Heroine {
   private ArrayList<Integer> coefficients;
   private int volatility;
   private List<Integer> score;
+  private int dateCount;
 
   public InternalHeroine() {
     coefficients = new ArrayList<Integer>();
@@ -19,6 +20,7 @@ public class InternalHeroine implements Heroine {
       coefficients.add(random.nextInt(10) + 1);
     }
     volatility = 10;
+    dateCount = 0;
   }
 
   public void setScore(List<Integer> score) {
@@ -54,10 +56,13 @@ public class InternalHeroine implements Heroine {
   }
 
   public void date(InternalPlayer player) {
-    score.set(player.getIndex(), score.get(player.getIndex()) + getEvaluation(player));
-    if (volatility > 1) {
-      volatility--;
-    }
+    score.set(player.getIndex(), score.get(player.getIndex()) + getEvaluation(player) * volatility);
+    dateCount++;
+  }
+
+  public void decreaseVolatility() {
+    volatility = Math.max(volatility - dateCount, 0);
+    dateCount = 0;
   }
 
   public List<Integer> getBestPlayers() {

@@ -47,9 +47,7 @@ public class GameEngine {
     }
   }
 
-  public void proceed() {
-    turn++;
-
+  private List<Player> getPlayersPublicInformation() {
     ArrayList<Player> players = new ArrayList<Player>();
     for (int i = 0; i < internalPlayers.size(); i++) {
       Player player = internalPlayers.get(i);
@@ -59,6 +57,13 @@ public class GameEngine {
         players.add(new InternalPlayer(i));
       }
     }
+    return players;
+  }
+
+  public void proceed() {
+    turn++;
+
+    List<Player> players = getPlayersPublicInformation();
 
     ArrayList<Heroine> heroines = new ArrayList<Heroine>();
     for (Heroine heroine : internalHeroines) {
@@ -84,6 +89,10 @@ public class GameEngine {
         internalHeroines.get(move.getValue()).date(player);
         break;
       }
+    }
+
+    for (int i = 0; i < internalHeroines.size(); i++) {
+      internalHeroines.get(i).decreaseVolatility();
     }
   }
 
@@ -134,14 +143,23 @@ public class GameEngine {
     return turn;
   }
 
-  public void outputStatus() {
+  public void outputStatus(boolean outputPrivateInformation) {
     System.out.println("Turn " + turn);
 
     System.out.println("Players' parameters:");
-    for (int i = 0; i < internalPlayers.size(); i++) {
+    List<Player> players;
+    if (outputPrivateInformation) {
+      players = new ArrayList<Player>();
+      for (Player player : internalPlayers) {
+        players.add(player);
+      }
+    } else {
+      players = getPlayersPublicInformation();
+    }
+    for (int i = 0; i < players.size(); i++) {
       System.out.print("player " + i + ":");
       for (int j = 0; j < 3; j++) {
-        System.out.print(" " + internalPlayers.get(i).getParameter(j));
+        System.out.print(" " + players.get(i).getParameter(j));
       }
       System.out.println();
     }
@@ -154,7 +172,7 @@ public class GameEngine {
       for (int j = 0; j < 3; j++) {
         System.out.print(" " + internalHeroines.get(i).getCoefficient(j));
       }
-      System.out.print(" " + internalHeroines.get(i).getVolatility());
+      System.out.print("; " + internalHeroines.get(i).getVolatility());
       System.out.println();
     }
 
@@ -170,6 +188,13 @@ public class GameEngine {
     }
 
     System.out.println("");
-    System.out.println("");
+  }
+
+  public void outputPlayer(int index) {
+    System.out.print("Player " + index + "'s parameters:");
+    for (int j = 0; j < 3; j++) {
+      System.out.print(" " + internalPlayers.get(index).getParameter(j));
+    }
+    System.out.println();
   }
 }
