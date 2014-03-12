@@ -19,7 +19,7 @@ do_turn:
 end:
 	for each h in heroines:
 		best_players = argmax_p(h.love_score[p])
-		for each p in best_players:
-			p.star += 12 / best_players.size
+		foreach p in best_players:
+			p.star += lcm(factors(players.size)) / best_players.size
 	winner_candidates = argmax_p{p in players}(p.star)
 	winner = argmax_w{w in winner_candidates}(w.total_score)
